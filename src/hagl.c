@@ -64,6 +64,14 @@ hagl_clear(void *_surface)
     hagl_set_clip(surface, x0, y0, x1, y1);
 }
 
+void
+hagl_set_resolution(hagl_backend_t *backend, int16_t width, int16_t height)
+{
+    backend->set_resolution(backend, width, height);
+    hagl_set_clip(backend, 0, 0,  width-1,  height-1);
+}
+
+
 hagl_backend_t *
 hagl_init(void)
 {
